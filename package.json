@@ -1,0 +1,30 @@
+{
+  "name": "ocss-parser",
+  "version": "1.0.0",
+  "description": "parser for OCSS syntax",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tap-spec": "^0.2.1",
+    "tape": "^2.14.0"
+  },
+  "scripts": {
+    "test": "tape test/index.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxhoffmann/ocss-parser.git"
+  },
+  "keywords": [
+    "ocss",
+    "css",
+    "parser",
+    "ast"
+  ],
+  "author": "Maximilian Hoffmann <account@maximilianhoffmann.com> (http://maximilianhoffmann.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxhoffmann/ocss-parser/issues"
+  },
+  "homepage": "https://github.com/maxhoffmann/ocss-parser"
+}
