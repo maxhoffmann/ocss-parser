@@ -17,7 +17,7 @@ test('throws errors using invalid params', function(is) {
 });
 
 test('AST', function(is) {
-  is.plan(1);
+  is.plan(2);
 
   var ast = parse('test', '');
   var desired = {
@@ -29,4 +29,15 @@ test('AST', function(is) {
     variables: []
   };
   is.same(ast, desired, 'empty AST for empty string');
+
+  ast = parse('test', '\n');
+  desired = {
+    type: 'object',
+    name: 'test',
+    elements: [],
+    modifiers: [],
+    parentModifiers: [],
+    variables: []
+  };
+  is.same(ast, desired, 'empty AST for empty lines');
 });

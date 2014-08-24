@@ -6,6 +6,8 @@ module.exports = function(name, ocss) {
   return ocss
     .split('\n')
     .reduce(function(context, line, linenum, rules) {
+      if (empty(line)) return context;
+
       return context;
     }, ast);
 
@@ -19,6 +21,17 @@ module.exports = function(name, ocss) {
     if (typeof ocss !== 'string') throw new Error('missing ocss param');
   }
 
+  function object(name) {
+    return {
+      type: 'object',
+      name: name,
+      variables: [],
+      elements: [],
+      modifiers: [],
+      parentModifiers: []
+    };
+  }
+
   function empty(string) {
     return !/^\s*$/.test(string);
   }
@@ -29,17 +42,6 @@ module.exports = function(name, ocss) {
 
   function notIndented(string) {
     return !/^\s/.test(string);
-  }
-
-  function object(name) {
-    return {
-      type: 'object',
-      name: name,
-      variables: [],
-      elements: [],
-      modifiers: [],
-      parentModifiers: []
-    };
   }
 
 };
