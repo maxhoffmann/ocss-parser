@@ -52,36 +52,6 @@ module.exports = function(name, ocss) {
     return /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/.test(string);
   }
 
-  function toAST(previous, current, index, lines) {
-
-    if (index === lines.length-1) return current;
-
-    if (current.indentation > previous.indentation+1) throw new Error('wrong indentation');
-
-    if (current.indentation < previous.indentation ) {
-      var diff = (previous.indentation-current.indentation)+1;
-      addParent(current, getParent(diff, previous));
-    } else if (current.indentation === previous.indentation+1) {
-      addParent(current, previous);
-    } else {
-      addParent(current, previous.parent);
-    }
-
-    if (!current.parent[current.type+'s']) {
-      current.parent[current.type+'s'] = [];
-    }
-    current.parent[current.type+'s'].push(current);
-
-    return current;
-
-    function getParent(nesting, previous) {
-      for(var i = 0; i < nesting; i++) {
-        previous = previous.parent;
-      }
-      return previous;
-    }
-  }
-
   var parse = {};
 
   parse.element = function(line) {
@@ -98,6 +68,26 @@ module.exports = function(name, ocss) {
     return line;
   };
 
+  function toAST(previous, current, index, lines) {
+
+    if (index === lines.length-1) {
+      return current;
+    }
+    if (current.indentation > previous.indentation+1) {
+      throw new Error('wrong indentation at line '+current.linenum);
+    }
+
+    var nesting = (previous.indentation-current.indentation)+1;
+    var parent = addParent(current, getNestedParent(nesting, previous));
+
+    if (!parent[current.type+'s']) {
+      parent[current.type+'s'] = [];
+    }
+    parent[current.type+'s'].push(current);
+
+    return current;
+  }
+
   function parseType(line) {
     if (parse[line.type]) {
       var parsedLine = parse[line.type](line);
@@ -112,6 +102,14 @@ module.exports = function(name, ocss) {
       enumerable: false,
       value: value || null
     });
+    return node.parent;
+  }
+
+  function getNestedParent(nesting, node) {
+    while(nesting--) {
+      node = node.parent;
+    }
+    return node;
   }
 
   var object = {type: 'object', indentation: -1, name: name};

@@ -37,7 +37,7 @@ test('comments', function(is) {
 });
 
 test.only('AST', function(is) {
-  is.plan(6);
+  is.plan(7);
 
   var actual = parse('test', '');
   var expected = {
@@ -69,7 +69,7 @@ test.only('AST', function(is) {
       linenum: 1
     }]
   };
-  is.same(actual, expected, 'adds element with declaration');
+  is.same(actual, expected, 'adds declaration');
 
   actual = parse('test', 'display: block\ncolor: red');
   expected = {
@@ -93,7 +93,7 @@ test.only('AST', function(is) {
       raw: 'color: red'
     }]
   };
-  is.same(actual, expected, 'adds element with declarations');
+  is.same(actual, expected, 'adds declarations');
 
   actual = parse('test', 'display: block\ncolor: red\nchild');
   expected = {
@@ -164,4 +164,50 @@ test.only('AST', function(is) {
     }]
   };
   is.same(actual, expected, 'adds element with declaration');
+
+  actual = parse('test', 'display: block\ncolor: red\nchild\n\tcolor: blue\n\tbackground: transparant');
+  expected = {
+    type: 'object',
+    name: 'test',
+    indentation: -1,
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block',
+      linenum: 1,
+      indentation: 0,
+      raw: 'display: block'
+    },
+    {
+      type: 'declaration',
+      property: 'color',
+      value: 'red',
+      linenum: 2,
+      indentation: 0,
+      raw: 'color: red'
+    }],
+    elements: [{
+      type: 'element',
+      name: 'child',
+      linenum: 3,
+      indentation: 0,
+      raw: 'child',
+      declarations: [{
+        type: 'declaration',
+        property: 'color',
+        value: 'blue',
+        linenum: 4,
+        indentation: 1,
+        raw: 'color: blue'
+      },{
+        type: 'declaration',
+        property: 'background',
+        value: 'transparant',
+        linenum: 5,
+        indentation: 1,
+        raw: 'background: transparant'
+      }]
+    }]
+  };
+  is.same(actual, expected, 'adds element with declarations');
 });
