@@ -39,7 +39,7 @@ module.exports = function(name, ocss) {
 
   function addIndentation(line) {
     line.indentation = line.raw.match(/^\s*/)[0].length;
-    line.raw = line.raw.replace(/^\s+/, '');
+    line.raw = line.raw;
     return line;
   }
 
@@ -79,7 +79,7 @@ module.exports = function(name, ocss) {
   function declaration(line) {
     line.type = 'declaration';
 
-    var values = line.raw.match(/^(.+):\s*(.+)$/);
+    var values = line.raw.match(/^\s*([A-z-]+):\s*([A-z\-]+)\s*$/);
     line.property = values[1];
     line.value = values[2];
 

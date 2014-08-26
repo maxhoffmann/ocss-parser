@@ -18,7 +18,7 @@
         "line": 2
       },
       "indentation": 1,
-      "raw": "color: blue"
+      "raw": "\tcolor: blue"
     }]
   }]
 }
