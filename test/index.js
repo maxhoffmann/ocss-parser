@@ -31,7 +31,7 @@ cases.forEach(function(name) {
     var actual = parse('test', readFile(source));
     var expected = JSON.parse(readFile(ast));
 
-    is.same(actual, expected, 'result matches ast.json');
+    is.same(actual, expected, name);
     is.end();
   });
 
