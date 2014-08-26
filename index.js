@@ -5,10 +5,10 @@ module.exports = function(name, ocss) {
     empty: /^\s*$/,
     comment: / ?#.*$/,
     indentation: /^\s*/,
+    declaration: /^(.+)\s*:\s*(.+)$/,
     element: /^\w+$/,
     modifier: /^=\w+$/,
     parentmodifier: /^\^\w+$/,
-    declaration: /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/
   };
 
   return ocss
@@ -54,10 +54,11 @@ module.exports = function(name, ocss) {
   }
 
   function addType(line) {
-    if (regex.declaration.test(line.raw))     return declaration(line);
-    if (regex.element.test(line.raw))         return element(line);
-    if (regex.modifier.test(line.raw))        return modifier(line);
-    if (regex.parentModifier.test(line.raw))  return parentmodifier(line);
+    var string = line.raw.trim();
+    if (regex.declaration.test(string))     return declaration(line);
+    if (regex.element.test(string))         return element(line);
+    if (regex.modifier.test(string))        return modifier(line);
+    if (regex.parentmodifier.test(string))  return parentmodifier(line);
 
     error(line, 'unknown type');
   }
@@ -73,7 +74,7 @@ module.exports = function(name, ocss) {
   function declaration(line) {
     line.type = 'declaration';
 
-    var values = line.raw.match(regex.declaration);
+    var values = line.raw.trim().match(regex.declaration);
     line.property = values[1];
     line.value = values[2];
 
