@@ -12,7 +12,7 @@ module.exports = function(name, ocss) {
   }
 
   function removeComments(line) {
-    return line.replace(/#.*$/, '');
+    return line.replace(/ ?#.*$/, '');
   }
 
   function toObjects(line, linenum) {
