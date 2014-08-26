@@ -42,6 +42,7 @@ module.exports = function(name, ocss) {
   function type(string, position) {
     if (isElement(string)) return 'element';
     if (isModifier(string)) return 'modifier';
+    if (isParentModifier(string)) return 'parentmodifier';
     if (isDeclaration(string)) return 'declaration';
 
     throw new Error('Syntax error on line '+position.line+': '+string);
@@ -53,6 +54,10 @@ module.exports = function(name, ocss) {
 
   function isModifier(string) {
     return /^=\w+$/.test(string);
+  }
+
+  function isParentModifier(string) {
+    return /^\^\w+$/.test(string);
   }
 
   function isDeclaration(string) {
@@ -74,6 +79,12 @@ module.exports = function(name, ocss) {
     line.name = line.raw.replace('=', '');
     return line;
   };
+
+  parse.parentmodifier = function(line) {
+    line.name = line.raw.replace('^', '');
+    return line;
+  };
+
   parse.declaration = function(line) {
     var values = line.raw.match(/^(.+):\s*(.+)$/);
 
