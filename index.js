@@ -74,6 +74,10 @@ module.exports = function(name, ocss) {
     };
   };
 
+  parse.element = function(line) {
+    line.name = line.raw.trim();
+    return line;
+  };
 
   parse.modifier = function(line) {
     line.name = line.raw.replace('=', '');
@@ -91,11 +95,6 @@ module.exports = function(name, ocss) {
     line.property = values[1];
     line.value = values[2];
 
-    return line;
-  };
-
-  parse.element = function(line) {
-    line.name = line.raw.trim();
     return line;
   };
 
