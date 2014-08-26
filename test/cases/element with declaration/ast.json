@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "name": "test",
+  "indentation": -1,
+  "elements": [{
+    "type": "element",
+    "name": "child",
+    "position": {
+      "line": 1
+    },
+    "indentation": 0,
+    "raw": "child",
+    "declarations": [{
+      "type": "declaration",
+      "property": "color",
+      "value": "blue",
+      "position": {
+        "line": 2
+      },
+      "indentation": 1,
+      "raw": "color: blue"
+    }]
+  }]
+}

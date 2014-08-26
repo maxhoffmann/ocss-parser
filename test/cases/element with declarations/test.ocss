@@ -1,0 +1,6 @@
+display: block
+color: red
+
+child
+	color: blue
+	background: transparant

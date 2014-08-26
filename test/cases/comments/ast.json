@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "name": "test",
+  "indentation": -1,
+  "declarations": [{
+    "position": {
+      "line": 2
+    },
+    "indentation": 0,
+    "type": "declaration",
+    "property": "display",
+    "value": "block",
+    "raw": "display: block"
+  }]
+}
