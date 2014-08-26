@@ -49,7 +49,7 @@ module.exports = function(name, ocss) {
     if (isParentModifier(line.raw)) return parentmodifier(line);
     if (isDeclaration(line.raw))    return declaration(line);
 
-    throw new Error('Syntax error on line '+line.position.line+': '+line.raw);
+    error(line, 'unknown type');
   }
 
   function isElement(string) {
@@ -105,8 +105,12 @@ module.exports = function(name, ocss) {
   }
 
   function toAST(previousLine, currentLine, index, lines) {
-    if (currentLine.indentation > previousLine.indentation+1) {
-      throw new Error('wrong indentation at line '+currentLine.position.line);
+    if (currentLine.indentation > previousLine.indentation + 1) {
+      error(currentLine, 'wrong indentation (nested at least one level too deep)');
+    }
+    if (previousLine.type === 'declaration' &&
+      currentLine.indentation > previousLine.indentation) {
+      error(currentLine, 'wrong indentation (nesting under a declaration)');
     }
 
     var nesting = (previousLine.indentation-currentLine.indentation)+1;
@@ -138,6 +142,10 @@ module.exports = function(name, ocss) {
       node = node.parent;
     }
     return node;
+  }
+
+  function error(line, message) {
+    throw new Error('line '+line.position.line+': '+message+' `'+line.raw+'`');
   }
 
 };

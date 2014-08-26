@@ -20,11 +20,15 @@ test('params', function(is) {
 });
 
 test('indentation', function(is) {
-  is.plan(1);
+  is.plan(2);
 
   is.throws(function() {
     parse('test', 'element\n\t\tdisplay: block');
   }, 'too much indentation');
+
+  is.throws(function() {
+    parse('test', 'display: block\n\tcolor: red');
+  }, 'indentation after declaration');
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));
