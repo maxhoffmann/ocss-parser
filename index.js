@@ -88,6 +88,7 @@ module.exports = function(name, ocss) {
   }
 
   function modifier(line) {
+    if (line.indentation > 0) error('nested modifier');
     line.type = 'modifier';
     line.name = line.raw.replace('=', '');
     return line;
