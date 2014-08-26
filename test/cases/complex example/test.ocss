@@ -4,3 +4,21 @@ color: red
 child
 	color: blue
 	background: transparant
+
+	subchild
+		font-size: 12px
+
+=big
+	font-size: 200%
+
+	child
+		color: red
+
+^highlight
+	border: 1px solid red
+
+	child
+		padding: 2em
+
+		subchild
+			color: yellow
