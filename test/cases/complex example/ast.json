@@ -2,12 +2,34 @@
   "type": "object",
   "name": "test",
   "indentation": -1,
+  "declarations": [
+    {
+      "type": "declaration",
+      "property": "display",
+      "value": "block",
+      "position": {
+        "line": 1
+      },
+      "indentation": 0,
+      "raw": "display: block"
+    },
+    {
+      "type": "declaration",
+      "property": "color",
+      "value": "red",
+      "position": {
+        "line": 2
+      },
+      "indentation": 0,
+      "raw": "color: red"
+    }
+  ],
   "elements": [
     {
       "type": "element",
       "name": "child",
       "position": {
-        "line": 1
+        "line": 4
       },
       "indentation": 0,
       "raw": "child",
@@ -17,7 +39,7 @@
           "property": "color",
           "value": "blue",
           "position": {
-            "line": 2
+            "line": 5
           },
           "indentation": 1,
           "raw": "\tcolor: blue"
@@ -27,7 +49,7 @@
           "property": "background",
           "value": "transparant",
           "position": {
-            "line": 3
+            "line": 6
           },
           "indentation": 1,
           "raw": "\tbackground: transparant"

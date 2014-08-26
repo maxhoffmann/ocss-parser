@@ -1,3 +1,7 @@
 child
 	color: blue
 	background: transparant
+
+	subchild
+		color: red
+		font-size: 12px
