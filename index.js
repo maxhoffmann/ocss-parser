@@ -1,6 +1,16 @@
 module.exports = function(name, ocss) {
   validate(arguments);
 
+  var regex = {
+    empty: /^\s*$/,
+    comment: / ?#.*$/,
+    indentation: /^\s*/,
+    element: /^\w+$/,
+    modifier: /^=\w+$/,
+    parentmodifier: /^\^\w+$/,
+    declaration: /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/
+  };
+
   return ocss
     .split('\n')
     .map(removeComments)
@@ -21,7 +31,7 @@ module.exports = function(name, ocss) {
   }
 
   function removeComments(line) {
-    return line.replace(/ ?#.*$/, '');
+    return line.replace(regex.comment, '');
   }
 
   function toObjects(line, linenum) {
@@ -34,38 +44,22 @@ module.exports = function(name, ocss) {
   }
 
   function isNotEmpty(line) {
-    return ! /^\s*$/.test(line.raw);
+    return ! regex.empty.test(line.raw);
   }
 
   function addIndentation(line) {
-    line.indentation = line.raw.match(/^\s*/)[0].length;
+    line.indentation = line.raw.match(regex.indentation)[0].length;
     line.raw = line.raw;
     return line;
   }
 
   function addType(line) {
-    if (isElement(line.raw))        return element(line);
-    if (isModifier(line.raw))       return modifier(line);
-    if (isParentModifier(line.raw)) return parentmodifier(line);
-    if (isDeclaration(line.raw))    return declaration(line);
+    if (regex.declaration.test(line.raw))     return declaration(line);
+    if (regex.element.test(line.raw))         return element(line);
+    if (regex.modifier.test(line.raw))        return modifier(line);
+    if (regex.parentModifier.test(line.raw))  return parentmodifier(line);
 
     error(line, 'unknown type');
-  }
-
-  function isElement(string) {
-    return /^\w+$/.test(string);
-  }
-
-  function isModifier(string) {
-    return /^=\w+$/.test(string);
-  }
-
-  function isParentModifier(string) {
-    return /^\^\w+$/.test(string);
-  }
-
-  function isDeclaration(string) {
-    return /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/.test(string);
   }
 
   function object(name) {
@@ -79,7 +73,7 @@ module.exports = function(name, ocss) {
   function declaration(line) {
     line.type = 'declaration';
 
-    var values = line.raw.match(/^\s*([A-z-]+):\s*([A-z\-]+)\s*$/);
+    var values = line.raw.match(regex.declaration);
     line.property = values[1];
     line.value = values[2];
 
