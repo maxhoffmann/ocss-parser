@@ -18,7 +18,9 @@ module.exports = function(name, ocss) {
   function toObjects(line, linenum) {
     return {
       raw: line,
-      linenum: linenum+1
+      position: {
+        line: linenum+1
+      }
     };
   }
 
@@ -33,15 +35,15 @@ module.exports = function(name, ocss) {
   }
 
   function addType(line) {
-    line.type = type(line.raw, line.linenum);
+    line.type = type(line.raw, line.position);
     return line;
   }
 
-  function type(string, linenum) {
+  function type(string, position) {
     if (isElement(string)) return 'element';
     if (isDeclaration(string)) return 'declaration';
 
-    throw new Error('Syntax error on line '+linenum+': '+string);
+    throw new Error('Syntax error on line '+position.line+': '+string);
   }
 
   function isElement(string) {
@@ -78,7 +80,7 @@ module.exports = function(name, ocss) {
 
   function toAST(previousLine, currentLine, index, lines) {
     if (currentLine.indentation > previousLine.indentation+1) {
-      throw new Error('wrong indentation at line '+currentLine.linenum);
+      throw new Error('wrong indentation at line '+currentLine.position.line);
     }
 
     var nesting = (previousLine.indentation-currentLine.indentation)+1;

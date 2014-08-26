@@ -25,7 +25,9 @@ test('comments', function(is) {
     name: 'test',
     indentation: -1,
     declarations: [{
-      linenum: 2,
+      position: {
+        line: 2
+      },
       indentation: 0,
       type: 'declaration',
       property: 'display',
@@ -66,7 +68,9 @@ test.only('AST', function(is) {
       value: 'block',
       raw: 'display: block',
       indentation: 0,
-      linenum: 1
+      position: {
+        line: 1
+      }
     }]
   };
   is.same(actual, expected, 'adds declaration');
@@ -80,7 +84,9 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'display',
       value: 'block',
-      linenum: 1,
+      position: {
+        line: 1
+      },
       indentation: 0,
       raw: 'display: block'
     },
@@ -88,7 +94,9 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'color',
       value: 'red',
-      linenum: 2,
+      position: {
+        line: 2
+      },
       indentation: 0,
       raw: 'color: red'
     }]
@@ -104,7 +112,9 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'display',
       value: 'block',
-      linenum: 1,
+      position: {
+        line: 1
+      },
       indentation: 0,
       raw: 'display: block'
     },
@@ -112,14 +122,18 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'color',
       value: 'red',
-      linenum: 2,
+      position: {
+        line: 2
+      },
       indentation: 0,
       raw: 'color: red'
     }],
     elements: [{
       type: 'element',
       name: 'child',
-      linenum: 3,
+      position: {
+        line: 3
+      },
       indentation: 0,
       raw: 'child'
     }]
@@ -135,7 +149,9 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'display',
       value: 'block',
-      linenum: 1,
+      position: {
+        line: 1
+      },
       indentation: 0,
       raw: 'display: block'
     },
@@ -143,21 +159,27 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'color',
       value: 'red',
-      linenum: 2,
+      position: {
+        line: 2
+      },
       indentation: 0,
       raw: 'color: red'
     }],
     elements: [{
       type: 'element',
       name: 'child',
-      linenum: 3,
+      position: {
+        line: 3
+      },
       indentation: 0,
       raw: 'child',
       declarations: [{
         type: 'declaration',
         property: 'color',
         value: 'blue',
-        linenum: 4,
+        position: {
+          line: 4
+        },
         indentation: 1,
         raw: 'color: blue'
       }]
@@ -174,7 +196,9 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'display',
       value: 'block',
-      linenum: 1,
+      position: {
+        line: 1
+      },
       indentation: 0,
       raw: 'display: block'
     },
@@ -182,28 +206,36 @@ test.only('AST', function(is) {
       type: 'declaration',
       property: 'color',
       value: 'red',
-      linenum: 2,
+      position: {
+        line: 2
+      },
       indentation: 0,
       raw: 'color: red'
     }],
     elements: [{
       type: 'element',
       name: 'child',
-      linenum: 3,
+      position: {
+        line: 3
+      },
       indentation: 0,
       raw: 'child',
       declarations: [{
         type: 'declaration',
         property: 'color',
         value: 'blue',
-        linenum: 4,
+        position: {
+          line: 4
+        },
         indentation: 1,
         raw: 'color: blue'
       },{
         type: 'declaration',
         property: 'background',
         value: 'transparant',
-        linenum: 5,
+        position: {
+          line: 5
+        },
         indentation: 1,
         raw: 'background: transparant'
       }]
