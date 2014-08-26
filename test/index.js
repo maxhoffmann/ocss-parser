@@ -4,7 +4,7 @@ var path = require('path');
 
 var parse = require('../');
 
-test('throws errors using invalid params', function(is) {
+test('params', function(is) {
   is.plan(4);
 
   is.throws(parse, 'throws without params');
@@ -17,6 +17,14 @@ test('throws errors using invalid params', function(is) {
   is.throws(function() {
     parse('test');
   }, 'throws without ocss');
+});
+
+test('indentation', function(is) {
+  is.plan(1);
+
+  is.throws(function() {
+    parse('test', 'element\n\t\tdisplay: block');
+  }, 'too much indentation');
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));
