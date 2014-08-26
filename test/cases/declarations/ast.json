@@ -7,8 +7,7 @@
     "value": "block",
     "position": {
       "line": 1
-    },
-    "raw": "display: block"
+    }
   },
   {
     "type": "declaration",
@@ -16,7 +15,6 @@
     "value": "red",
     "position": {
       "line": 2
-    },
-    "raw": "color: red"
+    }
   }]
 }

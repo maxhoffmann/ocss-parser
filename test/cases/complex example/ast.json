@@ -3,7 +3,6 @@
   "name":"test",
   "declarations":[
     {
-      "raw":"display: block",
       "position":{
         "line":1
       },
@@ -12,7 +11,6 @@
       "value":"block"
     },
     {
-      "raw":"color: red",
       "position":{
         "line":2
       },
@@ -23,7 +21,6 @@
   ],
   "elements":[
     {
-      "raw":"child",
       "position":{
         "line":4
       },
@@ -31,7 +28,6 @@
       "name":"child",
       "declarations":[
         {
-          "raw":"\tcolor: blue",
           "position":{
             "line":5
           },
@@ -40,7 +36,6 @@
           "value":"blue"
         },
         {
-          "raw":"\tbackground: transparant",
           "position":{
             "line":6
           },
@@ -51,7 +46,6 @@
       ],
       "elements":[
         {
-          "raw":"\tsubchild",
           "position":{
             "line":8
           },
@@ -59,7 +53,6 @@
           "name":"subchild",
           "declarations":[
             {
-              "raw":"\t\tfont-size: 12px",
               "position":{
                 "line":9
               },
@@ -74,7 +67,6 @@
   ],
   "modifiers":[
     {
-      "raw":"=big",
       "position":{
         "line":11
       },
@@ -82,7 +74,6 @@
       "name":"big",
       "declarations":[
         {
-          "raw":"\tfont-size: 200%",
           "position":{
             "line":12
           },
@@ -93,7 +84,6 @@
       ],
       "elements":[
         {
-          "raw":"\tchild",
           "position":{
             "line":14
           },
@@ -101,7 +91,6 @@
           "name":"child",
           "declarations":[
             {
-              "raw":"\t\tcolor: red",
               "position":{
                 "line":15
               },
@@ -116,7 +105,6 @@
   ],
   "parentmodifiers":[
     {
-      "raw":"^highlight",
       "position":{
         "line":17
       },
@@ -124,7 +112,6 @@
       "name":"highlight",
       "declarations":[
         {
-          "raw":"\tborder: 1px solid red",
           "position":{
             "line":18
           },
@@ -135,7 +122,6 @@
       ],
       "elements":[
         {
-          "raw":"\tchild",
           "position":{
             "line":20
           },
@@ -143,7 +129,6 @@
           "name":"child",
           "declarations":[
             {
-              "raw":"\t\tpadding: 2em",
               "position":{
                 "line":21
               },
@@ -154,7 +139,6 @@
           ],
           "elements":[
             {
-              "raw":"\t\tsubchild",
               "position":{
                 "line":23
               },
@@ -162,7 +146,6 @@
               "name":"subchild",
               "declarations":[
                 {
-                  "raw":"\t\t\tcolor: yellow",
                   "position":{
                     "line":24
                   },

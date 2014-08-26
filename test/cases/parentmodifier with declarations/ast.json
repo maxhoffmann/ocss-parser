@@ -8,7 +8,6 @@
       "position": {
         "line": 1
       },
-      "raw": "^big",
       "declarations": [
         {
           "type": "declaration",
@@ -16,8 +15,7 @@
           "value": "blue",
           "position": {
             "line": 2
-          },
-          "raw": "\tcolor: blue"
+          }
         },
         {
           "type": "declaration",
@@ -25,8 +23,7 @@
           "value": "transparant",
           "position": {
             "line": 3
-          },
-          "raw": "\tbackground: transparant"
+          }
         }
       ]
     }

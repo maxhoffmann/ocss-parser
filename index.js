@@ -35,12 +35,13 @@ module.exports = function(name, ocss) {
   }
 
   function toObjects(line, linenum) {
-    return {
-      raw: line,
+    var _line = {
       position: {
         line: linenum+1
       }
     };
+    addNonEnumerable(_line, 'raw', line);
+    return _line;
   }
 
   function isNotEmpty(line) {

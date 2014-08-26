@@ -7,7 +7,6 @@
     },
     "type": "declaration",
     "property": "display",
-    "value": "block",
-    "raw": "display: block"
+    "value": "block"
   }]
 }

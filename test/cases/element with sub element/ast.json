@@ -8,7 +8,6 @@
       "position": {
         "line": 1
       },
-      "raw": "child",
       "declarations": [
         {
           "type": "declaration",
@@ -16,8 +15,7 @@
           "value": "blue",
           "position": {
             "line": 2
-          },
-          "raw": "\tcolor: blue"
+          }
         },
         {
           "type": "declaration",
@@ -25,8 +23,7 @@
           "value": "transparant",
           "position": {
             "line": 3
-          },
-          "raw": "\tbackground: transparant"
+          }
         }
       ],
       "elements": [
@@ -36,7 +33,6 @@
           "position": {
             "line": 5
           },
-          "raw": "\tsubchild",
           "declarations": [
             {
               "type": "declaration",
@@ -44,8 +40,7 @@
               "value": "red",
               "position": {
                 "line": 6
-              },
-              "raw": "\t\tcolor: red"
+              }
             },
             {
               "type": "declaration",
@@ -53,8 +48,7 @@
               "value": "12px",
               "position": {
                 "line": 7
-              },
-              "raw": "\t\tfont-size: 12px"
+              }
             }
           ]
         }

@@ -42,7 +42,6 @@ Example Output
   "name":"test",
   "declarations":[
     {
-      "raw":"display: block",
       "position":{
         "line":1
       },
@@ -51,7 +50,6 @@ Example Output
       "value":"block"
     },
     {
-      "raw":"color: red",
       "position":{
         "line":2
       },
@@ -62,7 +60,6 @@ Example Output
   ],
   "elements":[
     {
-      "raw":"child",
       "position":{
         "line":4
       },
@@ -70,7 +67,6 @@ Example Output
       "name":"child",
       "declarations":[
         {
-          "raw":"\tcolor: blue",
           "position":{
             "line":5
           },
@@ -79,7 +75,6 @@ Example Output
           "value":"blue"
         },
         {
-          "raw":"\tbackground: transparant",
           "position":{
             "line":6
           },
@@ -90,7 +85,6 @@ Example Output
       ],
       "elements":[
         {
-          "raw":"\tsubchild",
           "position":{
             "line":8
           },
@@ -98,7 +92,6 @@ Example Output
           "name":"subchild",
           "declarations":[
             {
-              "raw":"\t\tfont-size: 12px",
               "position":{
                 "line":9
               },
@@ -113,7 +106,6 @@ Example Output
   ],
   "modifiers":[
     {
-      "raw":"=big",
       "position":{
         "line":11
       },
@@ -121,7 +113,6 @@ Example Output
       "name":"big",
       "declarations":[
         {
-          "raw":"\tfont-size: 200%",
           "position":{
             "line":12
           },
@@ -132,7 +123,6 @@ Example Output
       ],
       "elements":[
         {
-          "raw":"\tchild",
           "position":{
             "line":14
           },
@@ -140,7 +130,6 @@ Example Output
           "name":"child",
           "declarations":[
             {
-              "raw":"\t\tcolor: red",
               "position":{
                 "line":15
               },
@@ -155,7 +144,6 @@ Example Output
   ],
   "parentmodifiers":[
     {
-      "raw":"^highlight",
       "position":{
         "line":17
       },
@@ -163,7 +151,6 @@ Example Output
       "name":"highlight",
       "declarations":[
         {
-          "raw":"\tborder: 1px solid red",
           "position":{
             "line":18
           },
@@ -174,7 +161,6 @@ Example Output
       ],
       "elements":[
         {
-          "raw":"\tchild",
           "position":{
             "line":20
           },
@@ -182,7 +168,6 @@ Example Output
           "name":"child",
           "declarations":[
             {
-              "raw":"\t\tpadding: 2em",
               "position":{
                 "line":21
               },
@@ -193,7 +178,6 @@ Example Output
           ],
           "elements":[
             {
-              "raw":"\t\tsubchild",
               "position":{
                 "line":23
               },
@@ -201,7 +185,6 @@ Example Output
               "name":"subchild",
               "declarations":[
                 {
-                  "raw":"\t\t\tcolor: yellow",
                   "position":{
                     "line":24
                   },
