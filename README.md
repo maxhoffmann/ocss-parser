@@ -1,7 +1,10 @@
-ocss-parser [![build][1]][2]
+ocss-parser
 ===========
 
-syntax parser for the [OCSS preprocessor][3]
+[![version][1]][2]
+[![build][3]][4]
+
+syntax parser for the [OCSS preprocessor][4]
 
 Example Input
 -------------
@@ -202,6 +205,8 @@ Example Output
 }
 ```
 
-[1]: http://img.shields.io/travis/maxhoffmann/ocss-parser.svg?style=flat
-[2]: https://travis-ci.org/maxhoffmann/ocss-parser
-[3]: https://github.com/maxhoffmann/ocss
+[1]: http://img.shields.io/npm/v/ocss-parser.svg?style=flat
+[2]: https://www.npmjs.org/package/ocss-parser
+[3]: http://img.shields.io/travis/maxhoffmann/ocss-parser.svg?style=flat
+[4]: https://travis-ci.org/maxhoffmann/ocss-parser
+[4]: https://github.com/maxhoffmann/ocss
