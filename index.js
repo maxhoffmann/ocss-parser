@@ -1,6 +1,15 @@
 module.exports = function(name, ocss) {
   validate(arguments);
 
+  return ocss
+    .split('\n')
+    .map(removeComments)
+    .map(toObjects)
+    .filter(isNotEmpty)
+    .map(addIndentation)
+    .map(addType)
+    .reduce(toAST, object(name));
+
   function validate(args) {
     var name = args[0];
     var ocss = args[1];
@@ -35,17 +44,12 @@ module.exports = function(name, ocss) {
   }
 
   function addType(line) {
-    line.type = type(line.raw, line.position);
-    return line;
-  }
+    if (isElement(line.raw))        return element(line);
+    if (isModifier(line.raw))       return modifier(line);
+    if (isParentModifier(line.raw)) return parentmodifier(line);
+    if (isDeclaration(line.raw))    return declaration(line);
 
-  function type(string, position) {
-    if (isElement(string)) return 'element';
-    if (isModifier(string)) return 'modifier';
-    if (isParentModifier(string)) return 'parentmodifier';
-    if (isDeclaration(string)) return 'declaration';
-
-    throw new Error('Syntax error on line '+position.line+': '+string);
+    throw new Error('Syntax error on line '+line.position.line+': '+line.raw);
   }
 
   function isElement(string) {
@@ -64,39 +68,41 @@ module.exports = function(name, ocss) {
     return /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/.test(string);
   }
 
-  var parse = {};
-
-  parse.object = function(name) {
+  function object(name) {
     return {
       type: 'object',
       name: name,
       indentation: -1
     };
-  };
+  }
 
-  parse.element = function(line) {
-    line.name = line.raw.trim();
-    return line;
-  };
+  function declaration(line) {
+    line.type = 'declaration';
 
-  parse.modifier = function(line) {
-    line.name = line.raw.replace('=', '');
-    return line;
-  };
-
-  parse.parentmodifier = function(line) {
-    line.name = line.raw.replace('^', '');
-    return line;
-  };
-
-  parse.declaration = function(line) {
     var values = line.raw.match(/^(.+):\s*(.+)$/);
-
     line.property = values[1];
     line.value = values[2];
 
     return line;
-  };
+  }
+
+  function element(line) {
+    line.type = 'element';
+    line.name = line.raw.trim();
+    return line;
+  }
+
+  function modifier(line) {
+    line.type = 'modifier';
+    line.name = line.raw.replace('=', '');
+    return line;
+  }
+
+  function parentmodifier(line) {
+    line.type = 'parentmodifier';
+    line.name = line.raw.replace('^', '');
+    return line;
+  }
 
   function toAST(previousLine, currentLine, index, lines) {
     if (currentLine.indentation > previousLine.indentation+1) {
@@ -117,13 +123,6 @@ module.exports = function(name, ocss) {
     return currentLine;
   }
 
-  function parseType(line) {
-    if (parse[line.type]) {
-      var parsedLine = parse[line.type](line);
-    }
-    return parsedLine;
-  }
-
   function addParent(node, value) {
     Object.defineProperty(node, 'parent', {
       configurable: true,
@@ -141,13 +140,4 @@ module.exports = function(name, ocss) {
     return node;
   }
 
-  return ocss
-    .split('\n')
-    .map(removeComments)
-    .map(toObjects)
-    .filter(isNotEmpty)
-    .map(addIndentation)
-    .map(addType)
-    .map(parseType)
-    .reduce(toAST, parse.object(name));
 };
