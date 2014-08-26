@@ -95,6 +95,7 @@ module.exports = function(name, ocss) {
   }
 
   function parentmodifier(line) {
+    if (line.indentation > 0) error('nested parent modifier');
     line.type = 'parentmodifier';
     line.name = line.raw.replace('^', '');
     return line;
