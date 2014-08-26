@@ -52,47 +52,37 @@ module.exports = function(name, ocss) {
     return /^\s*([A-z-]+):\s*([A-z\-]+)\s*$/.test(string);
   }
 
-  function parseType(line) {
-    return parse[line.type](line);
-  }
+  function toAST(previous, current, index, lines) {
 
-  function toAST(context, line, index, lines) {
-    if (index === lines.length-1) return line;
-    var ast = lines[lines.length-1];
-    if (!line.indentation) {
-      context = ast;
+    if (index === lines.length-1) return current;
+
+    if (current.indentation > previous.indentation+1) throw new Error('wrong indentation');
+
+    if (current.indentation < previous.indentation ) {
+      var diff = (previous.indentation-current.indentation)+1;
+      addParent(current, getParent(diff, previous));
+    } else if (current.indentation === previous.indentation+1) {
+      addParent(current, previous);
+    } else {
+      addParent(current, previous.parent);
     }
-    context = context[line.type+'s'];
-    delete line.indentation;
-    delete line.linenum;
-    delete line.raw;
-    context.push(line);
-    return context;
+
+    if (!current.parent[current.type+'s']) {
+      current.parent[current.type+'s'] = [];
+    }
+    current.parent[current.type+'s'].push(current);
+
+    return current;
+
+    function getParent(nesting, previous) {
+      for(var i = 0; i < nesting; i++) {
+        previous = previous.parent;
+      }
+      return previous;
+    }
   }
 
   var parse = {};
-
-  parse.object = function(name) {
-    return {
-      type: 'object',
-      name: name,
-      declarations: [],
-      elements: [],
-      modifiers: [],
-      parentModifiers: [],
-      variables: []
-    };
-  };
-
-  parse.element = function(line) {
-    line.type = line.type || 'element';
-    line.name = line.raw;
-    line.declarations = [];
-    line.elements = [];
-    delete line.raw;
-
-    return line;
-  };
 
   parse.declaration = function(line) {
     var values = line.raw.match(/^(.+):\s*(.+)$/);
@@ -103,7 +93,23 @@ module.exports = function(name, ocss) {
     return line;
   };
 
-  var object = parse.object(name);
+  function parseType(line) {
+    if (parse[line.type]) {
+      var parsedLine = parse[line.type](line);
+    }
+    return parsedLine;
+  }
+
+  function addParent(node, value) {
+    Object.defineProperty(node, 'parent', {
+      configurable: true,
+      writable: true,
+      enumerable: false,
+      value: value || null
+    });
+  }
+
+  var object = {type: 'object', indentation: -1, name: name};
 
   return ocss
     .split('\n')
