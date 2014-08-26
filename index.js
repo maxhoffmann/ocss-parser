@@ -54,9 +54,12 @@ module.exports = function(name, ocss) {
 
   var parse = {};
 
-  parse.element = function(line) {
-    line.name = line.raw.trim();
-    return line;
+  parse.object = function(name) {
+    return {
+      type: 'object',
+      name: name,
+      indentation: -1
+    };
   };
 
   parse.declaration = function(line) {
@@ -68,24 +71,28 @@ module.exports = function(name, ocss) {
     return line;
   };
 
-  function toAST(previous, current, index, lines) {
+  parse.element = function(line) {
+    line.name = line.raw.trim();
+    return line;
+  };
+
+  function toAST(previousLine, currentLine, index, lines) {
+    if (currentLine.indentation > previousLine.indentation+1) {
+      throw new Error('wrong indentation at line '+currentLine.linenum);
+    }
+
+    var nesting = (previousLine.indentation-currentLine.indentation)+1;
+    var parent = addParent(currentLine, getNestedParent(nesting, previousLine));
+
+    if (!parent[currentLine.type+'s']) {
+      parent[currentLine.type+'s'] = [];
+    }
+    parent[currentLine.type+'s'].push(currentLine);
 
     if (index === lines.length-1) {
-      return current;
+      return lines[0].parent;
     }
-    if (current.indentation > previous.indentation+1) {
-      throw new Error('wrong indentation at line '+current.linenum);
-    }
-
-    var nesting = (previous.indentation-current.indentation)+1;
-    var parent = addParent(current, getNestedParent(nesting, previous));
-
-    if (!parent[current.type+'s']) {
-      parent[current.type+'s'] = [];
-    }
-    parent[current.type+'s'].push(current);
-
-    return current;
+    return currentLine;
   }
 
   function parseType(line) {
@@ -112,8 +119,6 @@ module.exports = function(name, ocss) {
     return node;
   }
 
-  var object = {type: 'object', indentation: -1, name: name};
-
   return ocss
     .split('\n')
     .map(removeComments)
@@ -122,6 +127,5 @@ module.exports = function(name, ocss) {
     .map(addIndentation)
     .map(addType)
     .map(parseType)
-    .concat(object)
-    .reduce(toAST, object);
+    .reduce(toAST, parse.object(name));
 };
