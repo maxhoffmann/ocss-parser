@@ -47,7 +47,7 @@ module.exports = function(name, ocss) {
   }
 
   function isElement(string) {
-    return /^[A-z]+$/.test(string);
+    return /^\w+$/.test(string);
   }
 
   function isDeclaration(string) {
