@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "name": "test",
+  "indentation": -1,
+  "modifiers": [
+    {
+      "type": "modifier",
+      "name": "big",
+      "position": {
+        "line": 1
+      },
+      "indentation": 0,
+      "raw": "=big",
+      "declarations": [
+        {
+          "type": "declaration",
+          "property": "color",
+          "value": "blue",
+          "position": {
+            "line": 2
+          },
+          "indentation": 1,
+          "raw": "\tcolor: blue"
+        },
+        {
+          "type": "declaration",
+          "property": "background",
+          "value": "transparant",
+          "position": {
+            "line": 3
+          },
+          "indentation": 1,
+          "raw": "\tbackground: transparant"
+        }
+      ]
+    }
+  ]
+}
