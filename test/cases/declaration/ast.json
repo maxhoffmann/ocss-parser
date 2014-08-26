@@ -1,13 +1,11 @@
 {
   "type": "object",
   "name": "test",
-  "indentation": -1,
   "declarations": [{
     "type": "declaration",
     "property": "display",
     "value": "block",
     "raw": "display: block",
-    "indentation": 0,
     "position": {
       "line": 1
     }

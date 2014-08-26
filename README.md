@@ -40,14 +40,12 @@ Example Output
 {
   "type":"object",
   "name":"test",
-  "indentation":-1,
   "declarations":[
     {
       "raw":"display: block",
       "position":{
         "line":1
       },
-      "indentation":0,
       "type":"declaration",
       "property":"display",
       "value":"block"
@@ -57,7 +55,6 @@ Example Output
       "position":{
         "line":2
       },
-      "indentation":0,
       "type":"declaration",
       "property":"color",
       "value":"red"
@@ -69,7 +66,6 @@ Example Output
       "position":{
         "line":4
       },
-      "indentation":0,
       "type":"element",
       "name":"child",
       "declarations":[
@@ -78,7 +74,6 @@ Example Output
           "position":{
             "line":5
           },
-          "indentation":1,
           "type":"declaration",
           "property":"color",
           "value":"blue"
@@ -88,7 +83,6 @@ Example Output
           "position":{
             "line":6
           },
-          "indentation":1,
           "type":"declaration",
           "property":"background",
           "value":"transparant"
@@ -100,7 +94,6 @@ Example Output
           "position":{
             "line":8
           },
-          "indentation":1,
           "type":"element",
           "name":"subchild",
           "declarations":[
@@ -109,7 +102,6 @@ Example Output
               "position":{
                 "line":9
               },
-              "indentation":2,
               "type":"declaration",
               "property":"font-size",
               "value":"12px"
@@ -125,7 +117,6 @@ Example Output
       "position":{
         "line":11
       },
-      "indentation":0,
       "type":"modifier",
       "name":"big",
       "declarations":[
@@ -134,7 +125,6 @@ Example Output
           "position":{
             "line":12
           },
-          "indentation":1,
           "type":"declaration",
           "property":"font-size",
           "value":"200%"
@@ -146,7 +136,6 @@ Example Output
           "position":{
             "line":14
           },
-          "indentation":1,
           "type":"element",
           "name":"child",
           "declarations":[
@@ -155,7 +144,6 @@ Example Output
               "position":{
                 "line":15
               },
-              "indentation":2,
               "type":"declaration",
               "property":"color",
               "value":"red"
@@ -171,7 +159,6 @@ Example Output
       "position":{
         "line":17
       },
-      "indentation":0,
       "type":"parentmodifier",
       "name":"highlight",
       "declarations":[
@@ -180,7 +167,6 @@ Example Output
           "position":{
             "line":18
           },
-          "indentation":1,
           "type":"declaration",
           "property":"border",
           "value":"1px solid red"
@@ -192,7 +178,6 @@ Example Output
           "position":{
             "line":20
           },
-          "indentation":1,
           "type":"element",
           "name":"child",
           "declarations":[
@@ -201,7 +186,6 @@ Example Output
               "position":{
                 "line":21
               },
-              "indentation":2,
               "type":"declaration",
               "property":"padding",
               "value":"2em"
@@ -213,7 +197,6 @@ Example Output
               "position":{
                 "line":23
               },
-              "indentation":2,
               "type":"element",
               "name":"subchild",
               "declarations":[
@@ -222,7 +205,6 @@ Example Output
                   "position":{
                     "line":24
                   },
-                  "indentation":3,
                   "type":"declaration",
                   "property":"color",
                   "value":"yellow"

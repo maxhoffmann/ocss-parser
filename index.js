@@ -48,7 +48,7 @@ module.exports = function(name, ocss) {
   }
 
   function addIndentation(line) {
-    line.indentation = line.raw.match(regex.indentation)[0].length;
+    addNonEnumerable(line, 'indentation', line.raw.match(regex.indentation)[0].length);
     line.raw = line.raw;
     return line;
   }
@@ -64,11 +64,12 @@ module.exports = function(name, ocss) {
   }
 
   function object(name) {
-    return {
+    var _object = {
       type: 'object',
-      name: name,
-      indentation: -1
+      name: name
     };
+    addNonEnumerable(_object, 'indentation', -1);
+    return _object;
   }
 
   function declaration(line) {
@@ -111,7 +112,8 @@ module.exports = function(name, ocss) {
     }
 
     var nesting = (previousLine.indentation-currentLine.indentation)+1;
-    var parent = addParent(currentLine, getNestedParent(nesting, previousLine));
+    addNonEnumerable(currentLine, 'parent', getNestedParent(nesting, previousLine));
+    var parent = currentLine.parent;
 
     if (!parent[currentLine.type+'s']) {
       parent[currentLine.type+'s'] = [];
@@ -124,14 +126,13 @@ module.exports = function(name, ocss) {
     return currentLine;
   }
 
-  function addParent(node, value) {
-    Object.defineProperty(node, 'parent', {
+  function addNonEnumerable(node, property, value) {
+    Object.defineProperty(node, property, {
       configurable: true,
       writable: true,
       enumerable: false,
-      value: value || null
+      value: value
     });
-    return node.parent;
   }
 
   function getNestedParent(nesting, node) {

@@ -1,7 +1,6 @@
 {
   "type": "object",
   "name": "test",
-  "indentation": -1,
   "elements": [
     {
       "type": "element",
@@ -9,7 +8,6 @@
       "position": {
         "line": 1
       },
-      "indentation": 0,
       "raw": "child",
       "declarations": [
         {
@@ -19,7 +17,6 @@
           "position": {
             "line": 2
           },
-          "indentation": 1,
           "raw": "\tcolor: blue"
         },
         {
@@ -29,7 +26,6 @@
           "position": {
             "line": 3
           },
-          "indentation": 1,
           "raw": "\tbackground: transparant"
         }
       ]
