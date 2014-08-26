@@ -20,7 +20,7 @@ test('params', function(is) {
 });
 
 test('indentation', function(is) {
-  is.plan(2);
+  is.plan(4);
 
   is.throws(function() {
     parse('test', 'element\n\t\tdisplay: block');
@@ -29,6 +29,14 @@ test('indentation', function(is) {
   is.throws(function() {
     parse('test', 'display: block\n\tcolor: red');
   }, 'indentation after declaration');
+
+  is.throws(function() {
+    parse('test', 'element\n\t=modifier');
+  }, 'nested modifier');
+
+  is.throws(function() {
+    parse('test', 'element\n\t^parentmodifier');
+  }, 'nested parent modifier');
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));
