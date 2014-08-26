@@ -9,6 +9,7 @@ module.exports = function(name, ocss) {
     element: /^\w+$/,
     modifier: /^=\w+$/,
     parentmodifier: /^\^\w+$/,
+    inlineTag: /^\(([a-z]+)\)/
   };
 
   return ocss
@@ -17,6 +18,7 @@ module.exports = function(name, ocss) {
     .map(toObjects)
     .filter(isNotEmpty)
     .map(addIndentation)
+    .map(stripInlineTag)
     .map(addType)
     .reduce(toAST, object(name));
 
@@ -50,6 +52,14 @@ module.exports = function(name, ocss) {
 
   function addIndentation(line) {
     addNonEnumerable(line, 'indentation', line.raw.match(regex.indentation)[0].length);
+    return line;
+  }
+
+  function stripInlineTag(line) {
+    var trimmedLine = line.raw.trim();
+    if (!regex.inlineTag.test(trimmedLine)) return line;
+    line.tag = trimmedLine.match(regex.inlineTag)[1];
+    line.raw = trimmedLine.replace(regex.inlineTag, '');
     return line;
   }
 

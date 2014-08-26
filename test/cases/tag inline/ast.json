@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "name": "test",
+  "elements": [
+    {
+      "position": {
+        "line":1
+      },
+      "tag": "div",
+      "type": "element",
+      "name": "element",
+      "declarations": [
+        {
+        "position": {
+          "line":2
+        },
+        "type": "declaration",
+        "property": "color",
+        "value": "red"
+        }
+      ],
+      "elements": [
+        {
+          "position": {
+            "line":4
+          },
+          "tag": "a",
+          "type": "element",
+          "name": "link",
+          "declarations": [
+            {
+              "position": {
+                "line":5
+              },
+              "type": "declaration",
+              "property": "display",
+              "value": "inline-block"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

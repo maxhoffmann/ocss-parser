@@ -1,0 +1,5 @@
+(div)element
+	color: red
+
+	(a)link
+		display: inline-block
