@@ -17,7 +17,7 @@ module.exports = function(name, ocss) {
 
   function toObjects(line, linenum) {
     return {
-      raw: line.trim(),
+      raw: line,
       linenum: linenum+1
     };
   }
@@ -83,6 +83,11 @@ module.exports = function(name, ocss) {
   }
 
   var parse = {};
+
+  parse.element = function(line) {
+    line.name = line.raw.trim();
+    return line;
+  };
 
   parse.declaration = function(line) {
     var values = line.raw.match(/^(.+):\s*(.+)$/);

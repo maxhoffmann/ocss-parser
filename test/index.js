@@ -36,8 +36,8 @@ test('comments', function(is) {
   is.same(actual, expected, 'skips comments');
 });
 
-test('AST', function(is) {
-  is.plan(4);
+test.only('AST', function(is) {
+  is.plan(6);
 
   var actual = parse('test', '');
   var expected = {
@@ -95,64 +95,73 @@ test('AST', function(is) {
   };
   is.same(actual, expected, 'adds element with declarations');
 
-  // actual = parse('test', 'display: block\ncolor: red\nchild');
-  // expected = {
-  //   type: 'object',
-  //   name: 'test',
-  //   indentation: -1,
-  //   declarations: [{
-  //     type: 'declaration',
-  //     property: 'display',
-  //     value: 'block',
-  //     linenum: 1,
-  //     indentation: 0,
-  //     raw: 'display: block'
-  //   },
-  //   {
-  //     type: 'declaration',
-  //     property: 'color',
-  //     value: 'red',
-  //     linenum: 2,
-  //     indentation: 0,
-  //     raw: 'color: red'
-  //   }],
-  //   elements: [{
-  //     type: 'element',
-  //     name: 'child',
-  //     linenum: 3,
-  //     indentation: 0,
-  //     raw: 'child'
-  //   }]
-  // };
-  // is.same(actual, expected, 'adds element without declarations');
+  actual = parse('test', 'display: block\ncolor: red\nchild');
+  expected = {
+    type: 'object',
+    name: 'test',
+    indentation: -1,
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block',
+      linenum: 1,
+      indentation: 0,
+      raw: 'display: block'
+    },
+    {
+      type: 'declaration',
+      property: 'color',
+      value: 'red',
+      linenum: 2,
+      indentation: 0,
+      raw: 'color: red'
+    }],
+    elements: [{
+      type: 'element',
+      name: 'child',
+      linenum: 3,
+      indentation: 0,
+      raw: 'child'
+    }]
+  };
+  is.same(actual, expected, 'adds element without declarations');
 
-  // actual = parse('test', 'display: block\ncolor: red\nchild\n\tcolor: blue');
-  // expected = {
-  //   type: 'object',
-  //   name: 'test',
-  //   declarations: [{
-  //     type: 'declaration',
-  //     property: 'display',
-  //     value: 'block'
-  //   },
-  //   {
-  //     type: 'declaration',
-  //     property: 'color',
-  //     value: 'red'
-  //   }],
-  //   elements: [{
-  //     type: 'element',
-  //     name: 'child',
-  //     declarations: [{
-  //       type: 'declaration',
-  //       property: 'color',
-  //       value: 'blue'
-  //     }],
-  //     elements: []
-  //   }],
-  //   modifiers: [],
-  //   parentModifiers: [],
-  //   variables: []
-  // };
-  // is.same(actual, expected, 'adds element with declaration');
+  actual = parse('test', 'display: block\ncolor: red\nchild\n\tcolor: blue');
+  expected = {
+    type: 'object',
+    name: 'test',
+    indentation: -1,
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block',
+      linenum: 1,
+      indentation: 0,
+      raw: 'display: block'
+    },
+    {
+      type: 'declaration',
+      property: 'color',
+      value: 'red',
+      linenum: 2,
+      indentation: 0,
+      raw: 'color: red'
+    }],
+    elements: [{
+      type: 'element',
+      name: 'child',
+      linenum: 3,
+      indentation: 0,
+      raw: 'child',
+      declarations: [{
+        type: 'declaration',
+        property: 'color',
+        value: 'blue',
+        linenum: 4,
+        indentation: 1,
+        raw: 'color: blue'
+      }]
+    }]
+  };
+  is.same(actual, expected, 'adds element with declaration');
 });
