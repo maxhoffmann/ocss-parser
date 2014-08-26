@@ -54,11 +54,11 @@ module.exports = function(name, ocss) {
   }
 
   function addType(line) {
-    var string = line.raw.trim();
-    if (regex.declaration.test(string))     return declaration(line);
-    if (regex.element.test(string))         return element(line);
-    if (regex.modifier.test(string))        return modifier(line);
-    if (regex.parentmodifier.test(string))  return parentmodifier(line);
+    var trimmedLine = line.raw.trim();
+    if (regex.declaration.test(trimmedLine))     return declaration(line);
+    if (regex.element.test(trimmedLine))         return element(line);
+    if (regex.modifier.test(trimmedLine))        return modifier(line);
+    if (regex.parentmodifier.test(trimmedLine))  return parentmodifier(line);
 
     error(line, 'unknown type');
   }
