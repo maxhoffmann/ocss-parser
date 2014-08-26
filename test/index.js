@@ -23,16 +23,12 @@ test('comments', function(is) {
   var expected = {
     type: 'object',
     name: 'test',
-    elements: [{
-      type: 'element',
-      name: 'test',
-      declarations: [{
-        type: 'declaration',
-        property: 'display',
-        value: 'block'
-      }],
-      elements: []
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block'
     }],
+    elements: [],
     modifiers: [],
     parentModifiers: [],
     variables: []
@@ -47,12 +43,8 @@ test('AST', function(is) {
   var expected = {
     type: 'object',
     name: 'test',
-    elements: [{
-      type: 'element',
-      name: 'test',
-      declarations: [],
-      elements: []
-    }],
+    declarations: [],
+    elements: [],
     modifiers: [],
     parentModifiers: [],
     variables: []
@@ -61,34 +53,26 @@ test('AST', function(is) {
 
   actual = parse('test', '\n');
   expected = {
-      type: 'object',
-      name: 'test',
-      elements: [{
-        type: 'element',
-        name: 'test',
-        declarations: [],
-        elements: []
-      }],
-      modifiers: [],
-      parentModifiers: [],
-      variables: []
-    };
+    type: 'object',
+    name: 'test',
+    declarations: [],
+    elements: [],
+    modifiers: [],
+    parentModifiers: [],
+    variables: []
+  };
   is.same(actual, expected, 'empty AST for empty lines');
 
   actual = parse('test', 'display: block');
   expected = {
     type: 'object',
     name: 'test',
-    elements: [{
-      type: 'element',
-      name: 'test',
-      declarations: [{
-        type: 'declaration',
-        property: 'display',
-        value: 'block'
-      }],
-      elements: []
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block'
     }],
+    elements: [],
     modifiers: [],
     parentModifiers: [],
     variables: []
@@ -99,21 +83,17 @@ test('AST', function(is) {
   expected = {
     type: 'object',
     name: 'test',
-    elements: [{
-      type: 'element',
-      name: 'test',
-      declarations: [{
-        type: 'declaration',
-        property: 'display',
-        value: 'block'
-      },
-      {
-        type: 'declaration',
-        property: 'color',
-        value: 'red'
-      }],
-      elements: []
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block'
+    },
+    {
+      type: 'declaration',
+      property: 'color',
+      value: 'red'
     }],
+    elements: [],
     modifiers: [],
     parentModifiers: [],
     variables: []
@@ -124,22 +104,17 @@ test('AST', function(is) {
   expected = {
     type: 'object',
     name: 'test',
-    elements: [{
-      type: 'element',
-      name: 'test',
-      declarations: [{
-        type: 'declaration',
-        property: 'display',
-        value: 'block'
-      },
-      {
-        type: 'declaration',
-        property: 'color',
-        value: 'red'
-      }],
-      elements: []
+    declarations: [{
+      type: 'declaration',
+      property: 'display',
+      value: 'block'
     },
     {
+      type: 'declaration',
+      property: 'color',
+      value: 'red'
+    }],
+    elements: [{
       type: 'element',
       name: 'child',
       declarations: [],

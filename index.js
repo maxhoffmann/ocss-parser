@@ -61,7 +61,6 @@ module.exports = function(name, ocss) {
     var ast = lines[lines.length-1];
     if (!line.indentation) {
       context = ast;
-      if (line.type === 'declaration') context = ast.elements[0];
     }
     context = context[line.type+'s'];
     delete line.indentation;
@@ -77,10 +76,11 @@ module.exports = function(name, ocss) {
     return {
       type: 'object',
       name: name,
-      variables: [],
-      elements: [parse.element({raw: name})],
+      declarations: [],
+      elements: [],
       modifiers: [],
-      parentModifiers: []
+      parentModifiers: [],
+      variables: []
     };
   };
 
