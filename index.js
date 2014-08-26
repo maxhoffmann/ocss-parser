@@ -50,7 +50,6 @@ module.exports = function(name, ocss) {
 
   function addIndentation(line) {
     addNonEnumerable(line, 'indentation', line.raw.match(regex.indentation)[0].length);
-    line.raw = line.raw;
     return line;
   }
 
