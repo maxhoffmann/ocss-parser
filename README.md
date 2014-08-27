@@ -4,7 +4,7 @@ ocss-parser
 [![version][1]][2]
 [![build][3]][4]
 
-syntax parser for the [OCSS preprocessor][4]
+syntax parser for the [OCSS preprocessor][5]
 
 Example Input
 -------------
@@ -214,4 +214,4 @@ Install dependencies with `npm install` once. Afterwards run `npm test` every ti
 [2]: https://www.npmjs.org/package/ocss-parser
 [3]: http://img.shields.io/travis/maxhoffmann/ocss-parser.svg?style=flat
 [4]: https://travis-ci.org/maxhoffmann/ocss-parser
-[4]: https://github.com/maxhoffmann/ocss
+[5]: https://github.com/maxhoffmann/ocss
