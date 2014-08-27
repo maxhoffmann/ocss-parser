@@ -42,6 +42,7 @@ test('errors', function(is) {
   }, 'invalid object name');
 
   is.end();
+
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));
