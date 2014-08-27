@@ -1,5 +1,5 @@
 module.exports = function(name, ocss) {
-  validate(arguments);
+  validate(name, ocss);
 
   var regex = {
     empty: /^\s*$/,
@@ -20,10 +20,7 @@ module.exports = function(name, ocss) {
     .map(addType)
     .reduce(toAST, object(name));
 
-  function validate(args) {
-    var name = args[0];
-    var ocss = args[1];
-
+  function validate(name, ocss) {
     if ( ! name) throw new Error('missing object name param');
     if (/-/.test(name)) throw new Error('dashes are not allowed in object names');
 
