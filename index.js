@@ -1,4 +1,4 @@
-module.exports = function(name, ocss) {
+module.exports = function(objectName, ocss) {
 
   var regex = {
     empty: /^\s*$/,
@@ -11,7 +11,7 @@ module.exports = function(name, ocss) {
     parentmodifier: /^\^\w+$/,
   };
 
-  validate(name, ocss);
+  validate(objectName, ocss);
 
   return ocss
     .split('\n')
@@ -20,13 +20,13 @@ module.exports = function(name, ocss) {
     .filter(isNotEmpty)
     .map(addIndentation)
     .map(addType)
-    .reduce(toAST, object(name));
+    .reduce(toAST, object(objectName));
 
-  function validate(name, ocss) {
-    if ( ! name)
+  function validate(objectName, ocss) {
+    if ( ! objectName)
       throw new Error('missing object name param');
 
-    if ( ! regex.object.test(name))
+    if ( ! regex.object.test(objectName))
       throw new Error('object name may only contain letters and underscore');
 
     if (typeof ocss !== 'string')
