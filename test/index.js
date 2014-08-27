@@ -19,8 +19,7 @@ test('params', function(is) {
   }, 'throws without ocss');
 });
 
-test('indentation', function(is) {
-  is.plan(4);
+test('errors', function(is) {
 
   is.throws(function() {
     parse('test', 'element\n\t\tdisplay: block');
@@ -37,6 +36,12 @@ test('indentation', function(is) {
   is.throws(function() {
     parse('test', 'element\n\t^parentmodifier');
   }, 'nested parent modifier');
+
+  is.throws(function() {
+    parse('test-wrong', '');
+  }, 'invalid object name');
+
+  is.end();
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));

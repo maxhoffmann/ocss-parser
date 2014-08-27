@@ -5,6 +5,7 @@ module.exports = function(name, ocss) {
     empty: /^\s*$/,
     comment: / ?#.*$/,
     indentation: /^\s*/,
+    object: /^\w+$/,
     declaration: /^(.+)\s*:\s*(.+)$/,
     element: /^\w+$/,
     modifier: /^=\w+$/,
@@ -61,6 +62,9 @@ module.exports = function(name, ocss) {
   }
 
   function object(name) {
+    if ( ! regex.object.test(name)) {
+      error('object name may only contain letters and underscore');
+    }
     var _object = {
       type: 'object',
       name: name
