@@ -1,5 +1,4 @@
 module.exports = function(name, ocss) {
-  validate(name, ocss);
 
   var regex = {
     empty: /^\s*$/,
@@ -12,6 +11,8 @@ module.exports = function(name, ocss) {
     parentmodifier: /^\^\w+$/,
   };
 
+  validate(name, ocss);
+
   return ocss
     .split('\n')
     .map(removeComments)
@@ -22,10 +23,14 @@ module.exports = function(name, ocss) {
     .reduce(toAST, object(name));
 
   function validate(name, ocss) {
-    if ( ! name) throw new Error('missing object name param');
-    if (/-/.test(name)) throw new Error('dashes are not allowed in object names');
+    if ( ! name)
+      throw new Error('missing object name param');
 
-    if (typeof ocss !== 'string') throw new Error('missing ocss param');
+    if ( ! regex.object.test(name))
+      throw new Error('object name may only contain letters and underscore');
+
+    if (typeof ocss !== 'string')
+      throw new Error('missing ocss param');
   }
 
   function removeComments(rawLine) {
@@ -62,9 +67,6 @@ module.exports = function(name, ocss) {
   }
 
   function object(name) {
-    if ( ! regex.object.test(name)) {
-      error('object name may only contain letters and underscore');
-    }
     var _object = {
       type: 'object',
       name: name

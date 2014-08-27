@@ -12,8 +12,8 @@ test('params', function(is) {
     parse('');
   }, 'throws without object name');
   is.throws(function() {
-    parse('has-dash');
-  }, 'throws if object name has dashes');
+    parse('invalid-name');
+  }, 'throws if object name is invalid');
   is.throws(function() {
     parse('test');
   }, 'throws without ocss');
@@ -36,10 +36,6 @@ test('errors', function(is) {
   is.throws(function() {
     parse('test', 'element\n\t^parentmodifier');
   }, 'nested parent modifier');
-
-  is.throws(function() {
-    parse('test-wrong', '');
-  }, 'invalid object name');
 
   is.end();
 
