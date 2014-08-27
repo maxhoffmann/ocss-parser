@@ -205,6 +205,11 @@ Example Output
 }
 ```
 
+Tests
+-----
+
+Install dependencies with `npm install` once. Afterwards run `npm test` every time you want to start the tests.
+
 [1]: http://img.shields.io/npm/v/ocss-parser.svg?style=flat
 [2]: https://www.npmjs.org/package/ocss-parser
 [3]: http://img.shields.io/travis/maxhoffmann/ocss-parser.svg?style=flat
