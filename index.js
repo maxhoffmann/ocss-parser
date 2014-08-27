@@ -27,18 +27,18 @@ module.exports = function(name, ocss) {
     if (typeof ocss !== 'string') throw new Error('missing ocss param');
   }
 
-  function removeComments(line) {
-    return line.replace(regex.comment, '');
+  function removeComments(rawLine) {
+    return rawLine.replace(regex.comment, '');
   }
 
-  function toObjects(line, linenum) {
-    var _line = {
+  function toObjects(rawLine, linenum) {
+    var line = {
       position: {
         line: linenum+1
       }
     };
-    addNonEnumerable(_line, 'raw', line);
-    return _line;
+    addNonEnumerable(line, 'raw', rawLine);
+    return line;
   }
 
   function isNotEmpty(line) {
