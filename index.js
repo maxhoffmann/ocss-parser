@@ -107,7 +107,7 @@ module.exports = function(name, ocss) {
     if (currentLine.indentation > previousLine.indentation + 1) {
       error(currentLine, 'wrong indentation (nested at least one level too deep)');
     }
-    if (previousLine.type === 'declaration' && previousLine.parent.type === 'object' &&
+    if (previousLine.type === 'declaration' &&
       currentLine.indentation > previousLine.indentation) {
       error(currentLine, 'wrong indentation (nesting under a declaration)');
     }
