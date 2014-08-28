@@ -1,6 +1,6 @@
 child
 	color: blue
-	background: transparant
+	background: transparent
 
 	subchild
 		color: red

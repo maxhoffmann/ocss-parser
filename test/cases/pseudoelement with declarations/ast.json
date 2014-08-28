@@ -1,10 +1,10 @@
 {
   "type": "object",
   "name": "test",
-  "elements": [
+  "pseudoelements": [
     {
-      "type": "element",
-      "name": "child",
+      "type": "pseudoelement",
+      "name": "hover",
       "position": {
         "line": 1
       },

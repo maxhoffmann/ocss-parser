@@ -3,7 +3,10 @@ color: red
 
 child
 	color: blue
-	background: transparant
+	background: transparent
+
+	:hover
+		color: red
 
 	subchild
 		font-size: 12px

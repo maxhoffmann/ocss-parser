@@ -20,7 +20,7 @@
         {
           "type": "declaration",
           "property": "background",
-          "value": "transparant",
+          "value": "transparent",
           "position": {
             "line": 3
           }

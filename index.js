@@ -7,6 +7,7 @@ module.exports = function(objectName, ocss) {
     object: /^\w+$/,
     declaration: /^(.+)\s*:\s*(.+)$/,
     element: /^\w+$/,
+    pseudoelement: /^:.+$/,
     modifier: /^=\w+$/,
     parentmodifier: /^\^\w+$/,
   };
@@ -60,6 +61,7 @@ module.exports = function(objectName, ocss) {
     var trimmedLine = line.raw.trim();
     if (regex.declaration.test(trimmedLine))     return declaration(line);
     if (regex.element.test(trimmedLine))         return element(line);
+    if (regex.pseudoelement.test(trimmedLine))   return pseudoelement(line);
     if (regex.modifier.test(trimmedLine))        return modifier(line);
     if (regex.parentmodifier.test(trimmedLine))  return parentmodifier(line);
 
@@ -88,6 +90,12 @@ module.exports = function(objectName, ocss) {
   function element(line) {
     line.type = 'element';
     line.name = line.raw.trim();
+    return line;
+  }
+
+  function pseudoelement(line) {
+    line.type = 'pseudoelement';
+    line.name = line.raw.replace(':', '').trim();
     return line;
   }
 
