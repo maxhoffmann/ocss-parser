@@ -2,7 +2,7 @@ var test = require('tape');
 var fs   = require('fs');
 var path = require('path');
 
-var parse = require('../');
+var parse = require('../').parse;
 
 test('params', function(is) {
   is.plan(4);
