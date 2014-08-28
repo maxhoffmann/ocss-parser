@@ -53,10 +53,6 @@ cases.forEach(function(name) {
     var actual = parse('test', readFile(source));
     var expected = JSON.parse(readFile(ast));
 
-    if (name === 'complex example') {
-      console.log(JSON.stringify(actual, null, 2), '\n---\n', JSON.stringify(expected, null, 2));
-    }
-
     is.same(actual, expected, name);
     is.end();
   });
