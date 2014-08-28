@@ -15,7 +15,10 @@ color: red
 
 child
   color: blue
-  background: transparant
+  background: transparent
+
+  :hover
+    color: red
 
   subchild
     font-size: 12px
@@ -41,159 +44,178 @@ Example Output
 
 ```json
 {
-  "type":"object",
-  "name":"test",
-  "declarations":[
+  "type": "object",
+  "name": "test",
+  "declarations": [
     {
-      "position":{
-        "line":1
+      "position": {
+        "line": 1
       },
-      "type":"declaration",
-      "property":"display",
-      "value":"block"
+      "type": "declaration",
+      "property": "display",
+      "value": "block"
     },
     {
-      "position":{
-        "line":2
+      "position": {
+        "line": 2
       },
-      "type":"declaration",
-      "property":"color",
-      "value":"red"
+      "type": "declaration",
+      "property": "color",
+      "value": "red"
     }
   ],
-  "elements":[
+  "elements": [
     {
-      "position":{
-        "line":4
+      "position": {
+        "line": 4
       },
-      "type":"element",
-      "name":"child",
-      "declarations":[
+      "type": "element",
+      "name": "child",
+      "declarations": [
         {
-          "position":{
-            "line":5
+          "position": {
+            "line": 5
           },
-          "type":"declaration",
-          "property":"color",
-          "value":"blue"
+          "type": "declaration",
+          "property": "color",
+          "value": "blue"
         },
         {
-          "position":{
-            "line":6
+          "position": {
+            "line": 6
           },
-          "type":"declaration",
-          "property":"background",
-          "value":"transparant"
+          "type": "declaration",
+          "property": "background",
+          "value": "transparent"
         }
       ],
-      "elements":[
+      "pseudoelements": [
         {
-          "position":{
-            "line":8
+          "position": {
+            "line": 8
           },
-          "type":"element",
-          "name":"subchild",
-          "declarations":[
+          "type": "pseudoelement",
+          "name": "hover",
+          "declarations": [
             {
-              "position":{
-                "line":9
+              "position": {
+                "line": 9
               },
-              "type":"declaration",
-              "property":"font-size",
-              "value":"12px"
+              "type": "declaration",
+              "property": "color",
+              "value": "red"
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "position": {
+            "line": 11
+          },
+          "type": "element",
+          "name": "subchild",
+          "declarations": [
+            {
+              "position": {
+                "line": 12
+              },
+              "type": "declaration",
+              "property": "font-size",
+              "value": "12px"
             }
           ]
         }
       ]
     }
   ],
-  "modifiers":[
+  "modifiers": [
     {
-      "position":{
-        "line":11
+      "position": {
+        "line": 14
       },
-      "type":"modifier",
-      "name":"big",
-      "declarations":[
+      "type": "modifier",
+      "name": "big",
+      "declarations": [
         {
-          "position":{
-            "line":12
+          "position": {
+            "line": 15
           },
-          "type":"declaration",
-          "property":"font-size",
-          "value":"200%"
+          "type": "declaration",
+          "property": "font-size",
+          "value": "200%"
         }
       ],
-      "elements":[
+      "elements": [
         {
-          "position":{
-            "line":14
+          "position": {
+            "line": 17
           },
-          "type":"element",
-          "name":"child",
-          "declarations":[
+          "type": "element",
+          "name": "child",
+          "declarations": [
             {
-              "position":{
-                "line":15
+              "position": {
+                "line": 18
               },
-              "type":"declaration",
-              "property":"color",
-              "value":"red"
+              "type": "declaration",
+              "property": "color",
+              "value": "red"
             }
           ]
         }
       ]
     }
   ],
-  "parentmodifiers":[
+  "parentmodifiers": [
     {
-      "position":{
-        "line":17
+      "position": {
+        "line": 20
       },
-      "type":"parentmodifier",
-      "name":"highlight",
-      "declarations":[
+      "type": "parentmodifier",
+      "name": "highlight",
+      "declarations": [
         {
-          "position":{
-            "line":18
+          "position": {
+            "line": 21
           },
-          "type":"declaration",
-          "property":"border",
-          "value":"1px solid red"
+          "type": "declaration",
+          "property": "border",
+          "value": "1px solid red"
         }
       ],
-      "elements":[
+      "elements": [
         {
-          "position":{
-            "line":20
+          "position": {
+            "line": 23
           },
-          "type":"element",
-          "name":"child",
-          "declarations":[
+          "type": "element",
+          "name": "child",
+          "declarations": [
             {
-              "position":{
-                "line":21
+              "position": {
+                "line": 24
               },
-              "type":"declaration",
-              "property":"padding",
-              "value":"2em"
+              "type": "declaration",
+              "property": "padding",
+              "value": "2em"
             }
           ],
-          "elements":[
+          "elements": [
             {
-              "position":{
-                "line":23
+              "position": {
+                "line": 26
               },
-              "type":"element",
-              "name":"subchild",
-              "declarations":[
+              "type": "element",
+              "name": "subchild",
+              "declarations": [
                 {
-                  "position":{
-                    "line":24
+                  "position": {
+                    "line": 27
                   },
-                  "type":"declaration",
-                  "property":"color",
-                  "value":"yellow"
+                  "type": "declaration",
+                  "property": "color",
+                  "value": "yellow"
                 }
               ]
             }
