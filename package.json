@@ -1,0 +1,19 @@
+{
+  "name": "ocss-liveedit",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "watchify index.js -o bundle.js -dv",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@jonykrause",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^5.10.1",
+    "hyperscript": "^1.4.0",
+    "observable": "^2.1.3",
+    "ocss-parser": "^1.2.0",
+    "watchify": "^1.0.2"
+  }
+}
