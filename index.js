@@ -7,8 +7,8 @@ document.body.appendChild(
   h('div',
     t = h('textarea.in', '', { autofocus: true }),
     h('pre.out', o.transform(o.input(t), function(txt) {
-      try { return JSON.stringify(ocss('OCSS_REPL', txt), null, 2) }
-      catch(e) { return e }
+      try { return JSON.stringify(ocss('OCSS_REPL', txt), null, 2); }
+      catch(e) { return e; }
     }))
   )
-)
+);
