@@ -28,15 +28,6 @@ child // comment
 
   child
     color: red
-
-^highlight
-  border: 1px solid red
-
-  child
-    padding: 2em
-
-    subchild
-      color: yellow
 ```
 
 Example Output
@@ -161,63 +152,6 @@ Example Output
               "type": "declaration",
               "property": "color",
               "value": "red"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "parentmodifiers": [
-    {
-      "position": {
-        "line": 20
-      },
-      "type": "parentmodifier",
-      "name": "highlight",
-      "declarations": [
-        {
-          "position": {
-            "line": 21
-          },
-          "type": "declaration",
-          "property": "border",
-          "value": "1px solid red"
-        }
-      ],
-      "elements": [
-        {
-          "position": {
-            "line": 23
-          },
-          "type": "element",
-          "name": "child",
-          "declarations": [
-            {
-              "position": {
-                "line": 24
-              },
-              "type": "declaration",
-              "property": "padding",
-              "value": "2em"
-            }
-          ],
-          "elements": [
-            {
-              "position": {
-                "line": 26
-              },
-              "type": "element",
-              "name": "subchild",
-              "declarations": [
-                {
-                  "position": {
-                    "line": 27
-                  },
-                  "type": "declaration",
-                  "property": "color",
-                  "value": "yellow"
-                }
-              ]
             }
           ]
         }
