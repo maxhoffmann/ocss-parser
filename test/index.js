@@ -20,7 +20,6 @@ test('params', function(is) {
 });
 
 test('errors', function(is) {
-
   is.throws(function() {
     parse('test', 'element\n\t\tdisplay: block');
   }, 'too much indentation');
@@ -33,12 +32,7 @@ test('errors', function(is) {
     parse('test', 'element\n\t=modifier');
   }, 'nested modifier');
 
-  is.throws(function() {
-    parse('test', 'element\n\t^parentmodifier');
-  }, 'nested parent modifier');
-
   is.end();
-
 });
 
 var cases = fs.readdirSync(path.join(__dirname, 'cases'));
