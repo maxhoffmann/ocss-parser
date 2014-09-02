@@ -13,7 +13,7 @@ Example Input
 display: block
 color: red
 
-child
+child // comment
   color: blue
   background: transparent
 
@@ -22,7 +22,7 @@ child
 
   subchild
     font-size: 12px
-
+// another comment
 =big
   font-size: 200%
 
