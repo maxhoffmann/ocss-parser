@@ -6,8 +6,8 @@ ocss-parser
 
 syntax parser for the [OCSS preprocessor][5]
 
-Example Input
--------------
+Input
+-----
 
 ```
 display: block
@@ -30,8 +30,8 @@ child // comment
     color: red
 ```
 
-Example Output
---------------
+AST Output
+----------
 
 ```json
 {
