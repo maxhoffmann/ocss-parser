@@ -12,8 +12,7 @@
 .test-child:hover {
 	color: red;
 }
-.test.test--big,
-.test--big .test {
+.test--big {
 	font-size: 200%;
 }
 .test--big .test-child {

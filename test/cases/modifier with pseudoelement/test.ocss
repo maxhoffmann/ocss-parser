@@ -1,0 +1,8 @@
+=bigger
+	color: red
+
+	:hover
+		display: inline
+
+		text
+			font-size: 2em

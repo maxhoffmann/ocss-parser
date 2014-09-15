@@ -1,0 +1,9 @@
+.test--bigger {
+	color: red;
+}
+.test--bigger:hover {
+	display: inline;
+}
+.test--bigger:hover .test-text {
+	font-size: 2em;
+}
