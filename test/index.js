@@ -3,6 +3,7 @@ var fs   = require('fs');
 var path = require('path');
 
 var parse = require('../').parse;
+var stringify = require('../').stringify;
 
 test('params', function(is) {
   is.plan(4);
@@ -43,11 +44,15 @@ cases.forEach(function(name) {
     var dir    = path.join(__dirname, 'cases', name);
     var source = path.join(dir, 'test.ocss');
     var ast    = path.join(dir, 'ast.json');
+    var css    = path.join(dir, 'test.css');
 
-    var actual = parse('test', readFile(source));
-    var expected = JSON.parse(readFile(ast));
+    var actualAST   = parse('test', readFile(source));
+    var expectedAST = JSON.parse(readFile(ast));
+    is.same(actualAST, expectedAST, name);
 
-    is.same(actual, expected, name);
+    var actualCSS   = stringify(actualAST);
+    var expectedCSS = readFile(css);
+    is.equal(actualCSS, expectedCSS, name);
     is.end();
   });
 

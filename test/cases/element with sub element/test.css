@@ -1,0 +1,8 @@
+.test-child {
+	color: blue;
+	background: transparent;
+}
+.test-child-subchild {
+	color: red;
+	font-size: 12px;
+}
