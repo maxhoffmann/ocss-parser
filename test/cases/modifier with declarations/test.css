@@ -1,4 +1,5 @@
-.test--big {
+.test.test--big,
+.test--big .test {
 	color: blue;
 	background: transparent;
 }
