@@ -11,7 +11,8 @@ var input = codemirror.fromTextArea(inputElement, {
   mode: 'sass',
   theme: 'base16-dark',
   autofocus: true,
-  tabSize: 2
+  tabSize: 2,
+  smartIndent: false
 });
 
 var output = codemirror.fromTextArea(outputElement, {
