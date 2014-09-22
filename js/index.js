@@ -1,14 +1,35 @@
-var t;
-var o = require('observable');
-var h = require('hyperscript');
 var ocss = require('ocss-parser');
+var codemirror = require('codemirror');
+require('codemirror/mode/sass/sass');
+require('codemirror/mode/css/css');
 
-document.body.appendChild(
-  h('div',
-    t = h('textarea.in', '', { autofocus: true }),
-    h('pre.out', o.transform(o.input(t), function(txt) {
-      try { return ocss.stringify(ocss.parse('object', txt)); }
-      catch(e) { return e; }
-    }))
-  )
-);
+var inputElement = document.querySelector('textarea.input');
+var outputElement = document.querySelector('textarea.output');
+
+var input = codemirror.fromTextArea(inputElement, {
+  lineNumbers: true,
+  mode: 'sass',
+  theme: 'base16-dark',
+  autofocus: true,
+  tabSize: 2
+});
+
+var output = codemirror.fromTextArea(outputElement, {
+  lineNumbers: true,
+  mode: 'css',
+  theme: 'base16-light',
+  readOnly: true,
+  tabSize: 2
+});
+
+input.on('change', function(event) {
+  try {
+    var ast = ocss.parse('object', event.getValue());
+    output.setValue(ocss.stringify(ast));
+  } catch(e) {
+    output.setValue(e.message);
+  }
+});
+
+var ast = ocss.parse('object', inputElement.value);
+output.setValue(ocss.stringify(ast));

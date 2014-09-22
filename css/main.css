@@ -1,32 +1,23 @@
 * {
   box-sizing: border-box;
 }
-.in, .out {
-  font-family: Consolas, "Liberation Mono", Courier;
-  font-size: 14px;
-  position: absolute;
-  top: 0px;
-  width: 50%;
-  height: 100%;
-  padding: 16px;
-  padding-bottom: 40px;
+body {
   margin: 0;
 }
-.in {
-  left: 0px;
+
+.CodeMirror {
+  position: absolute;
+  top:  0;
+  height: 100%;
+  width: 50%;
+  font-size: 1em;
+  font-family: Monaco, Consolas, monospace;
+  line-height: 1.8;
 }
-.out {
-  tab-size: 4;
+
+.input + .CodeMirror {
+  left: 0;
 }
-textarea {
-  background-color: rgb(40,40,40);
-  color: white;
-  border-width: 0px;
-  padding: 4px;
-}
-.out {
-  right: 0px;
-  overflow: auto;
-  line-height: 1.45;
-  background-color: #f7f7f7;
+.output + .CodeMirror {
+  right: 0;
 }

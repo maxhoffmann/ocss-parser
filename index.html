@@ -1,11 +1,33 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>OCSS live editor</title>
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <script src="js/bundle.js"></script>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>OCSS live editor</title>
+		<link rel="stylesheet" href="css/codemirror.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<textarea class="input">
+display: block
+color: red
+
+child
+	color: blue
+	background: transparent
+
+	:hover
+		color: red
+
+	subchild
+		font-size: 12px
+
+=big
+	font-size: 200%
+
+	child
+		color: red
+		</textarea>
+		<textarea class="output"></textarea>
+		<script src="js/bundle.js"></script>
+	</body>
 </html>
