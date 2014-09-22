@@ -12,7 +12,7 @@ var input = codemirror.fromTextArea(inputElement, {
   theme: 'base16-dark',
   autofocus: true,
   tabSize: 2,
-  smartIndent: false
+  indentWithTabs: true
 });
 
 var output = codemirror.fromTextArea(outputElement, {
@@ -20,11 +20,13 @@ var output = codemirror.fromTextArea(outputElement, {
   mode: 'css',
   theme: 'base16-light',
   readOnly: true,
-  tabSize: 2
+  tabSize: 2,
+
 });
 
 input.on('change', function(event) {
   try {
+    console.log(event.getValue());
     var ast = ocss.parse('object', event.getValue());
     output.setValue(ocss.stringify(ast));
   } catch(e) {
