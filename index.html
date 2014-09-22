@@ -7,7 +7,16 @@
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<textarea class="input">
+		<header class="header">
+			<input class="header-filename" placeholder="object" value="object"></input>
+			<pre class="header-filename_extension">.ocss</pre>
+			<div class="header-output_tabs">
+				<a class="header-output_tabs-tab header-output_tabs-tab--inactive" href="#ast">AST</a>
+				<a class="header-output_tabs-tab header-output_tabs-tab--active" href="#css">CSS</a>
+			</div>
+		</header>
+		<main class="editor">
+					<textarea class="editor-input">
 display: block
 color: red
 
@@ -15,19 +24,22 @@ child
 	color: blue
 	background: transparent
 
-	:hover
-		color: red
-
 	subchild
 		font-size: 12px
+
+	:hover
+		color: red
 
 =big
 	font-size: 200%
 
 	child
 		color: red
-		</textarea>
-		<textarea class="output"></textarea>
+					</textarea>
+					<textarea class="editor-output_css"></textarea>
+					<textarea class="editor-output_ast"></textarea>
+		</main>
+		<footer class="status status--valid">&#10003; No errors</footer>
 		<script src="js/bundle.js"></script>
 	</body>
 </html>
