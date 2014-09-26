@@ -4,7 +4,7 @@ ocss-parser
 [![version][1]][2]
 [![build][3]][4]
 
-syntax parser for the [OCSS preprocessor][5]
+This is the repository for the syntax parser and stringifier of the [OCSS preprocessor][5]. You can try it out in the [live editor][6].
 
 Input
 -----
@@ -197,3 +197,4 @@ Install dependencies with `npm install` once. Afterwards run `npm test` every ti
 [3]: http://img.shields.io/travis/maxhoffmann/ocss-parser.svg?style=flat
 [4]: https://travis-ci.org/maxhoffmann/ocss-parser
 [5]: https://github.com/maxhoffmann/ocss
+[6]: http://maxhoffmann.github.io/ocss-parser/
