@@ -9,7 +9,7 @@
 .test-child-subchild {
 	font-size: 12px;
 }
-.test-child:hover {
+.test-child:nth-child(2n + 1) {
 	color: red;
 }
 .test--big {

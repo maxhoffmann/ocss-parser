@@ -50,7 +50,7 @@
             "line": 8
           },
           "type": "pseudoelement",
-          "name": "hover",
+          "name": "nth-child(2n + 1)",
           "declarations": [
             {
               "position": {

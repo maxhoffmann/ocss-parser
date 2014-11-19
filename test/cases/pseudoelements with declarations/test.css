@@ -1,4 +1,4 @@
-.test:nth-child(2n + 1) {
+.test:hover:after {
 	color: blue;
 	background: transparent;
 }
