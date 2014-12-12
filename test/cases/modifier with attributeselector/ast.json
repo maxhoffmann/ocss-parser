@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "name": "test",
+  "modifiers": [
+    {
+      "type": "modifier",
+      "name": "bigger",
+      "position": {
+        "line": 1
+      },
+      "declarations": [
+        {
+          "type": "declaration",
+          "property": "color",
+          "value": "red",
+          "position": {
+            "line": 2
+          }
+        }
+      ],
+      "attributeselectors": [
+        {
+          "type": "attributeselector",
+          "name": "[aria-hidden=\"true\"]",
+          "position": {
+            "line": 4
+          },
+          "declarations": [
+            {
+              "type": "declaration",
+              "property": "visibility",
+              "value": "hidden",
+              "position": {
+                "line": 5
+              }
+            }
+          ],
+          "elements": [
+            {
+              "type": "element",
+              "name": "text",
+              "position": {
+                "line": 7
+              },
+              "declarations": [
+                {
+                  "type": "declaration",
+                  "property": "font-size",
+                  "value": "2em",
+                  "position": {
+                    "line": 8
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

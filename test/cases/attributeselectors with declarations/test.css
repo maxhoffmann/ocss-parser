@@ -1,0 +1,4 @@
+.test[aria-hidden="false"][rel] {
+	color: blue;
+	background: transparent;
+}

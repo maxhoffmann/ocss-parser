@@ -1,6 +1,6 @@
 {
   "name": "ocss-parser",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "syntax parser for the OCSS preprocessor",
   "main": "index.js",
   "dependencies": {},

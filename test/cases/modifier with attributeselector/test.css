@@ -1,0 +1,9 @@
+.test--bigger {
+	color: red;
+}
+.test--bigger[aria-hidden="true"] {
+	visibility: hidden;
+}
+.test--bigger[aria-hidden="true"] .test-text {
+	font-size: 2em;
+}

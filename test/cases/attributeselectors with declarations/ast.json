@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "name": "test",
+  "attributeselectors": [
+    {
+      "type": "attributeselector",
+      "name": "[aria-hidden=\"false\"][rel]",
+      "position": {
+        "line": 1
+      },
+      "declarations": [
+        {
+          "type": "declaration",
+          "property": "color",
+          "value": "blue",
+          "position": {
+            "line": 2
+          }
+        },
+        {
+          "type": "declaration",
+          "property": "background",
+          "value": "transparent",
+          "position": {
+            "line": 3
+          }
+        }
+      ]
+    }
+  ]
+}
