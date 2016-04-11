@@ -10,10 +10,10 @@
   "author": "@jonykrause",
   "license": "MIT",
   "devDependencies": {
-    "webpack": "^1.4.1-beta1"
+    "webpack": "^1.12.15"
   },
   "dependencies": {
-    "codemirror": "^4.6.0",
+    "codemirror": "^5.13.4",
     "ocss-parser": "^2.0.0"
   }
 }
