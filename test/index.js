@@ -27,6 +27,10 @@ test('errors', function(is) {
   }, 'too much indentation')
 
   is.throws(function() {
+    parse('test', 'element\n\tdisplay: block;')
+  }, 'no semicolons allowed')
+
+  is.throws(function() {
     parse('test', 'display: block\n\tcolor: red')
   }, 'indentation after declaration')
 
