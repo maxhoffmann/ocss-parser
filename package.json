@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "codemirror": "^4.6.0",
-    "ocss-parser": "^1.4.0"
+    "ocss-parser": "^2.0.0"
   }
 }
